@@ -151,6 +151,6 @@ export class MapComponent implements OnInit {
   }
 
   onNewLocation(e: LocationEvent) {
-    console.log(e);
+    // TODO:
   }
 }
