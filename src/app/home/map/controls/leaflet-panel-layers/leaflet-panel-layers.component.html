@@ -1,0 +1,169 @@
+<div class="panel p-2">
+  <div class="root-collapsible-container">
+    <label class="cursor-pointer" (click)="toggleCollapse(0)">
+      <span class="unselectable">
+        {{ this.expandedIndices.has(0) ? "-" : "+" }} Imágenes</span
+      >
+    </label>
+    @for(baseLayer of baseLayers; track baseLayer) {
+    <div
+      class="root-collapsible-content {{ isExpanded(0) ? '' : 'hidden' }}"
+      [class.expanded]="isExpanded(0)"
+    >
+      <div class="m-0 h-[22px]">
+        <input
+          id="baseLayer-{{ baseLayer }}"
+          type="radio"
+          (click)="selectBaseLayer(baseLayer)"
+          [checked]="baseLayerSelected == baseLayer"
+        />
+        <label for="baseLayer-{{ baseLayer }}" class="ml-1 unselectable">{{
+          baseLayer
+        }}</label>
+      </div>
+    </div>
+    }
+    <div class="root-collapsible-container">
+      <label class="cursor-pointer" (click)="toggleCollapse(1)">
+        <span class="unselectable">
+          {{ this.expandedIndices.has(1) ? "-" : "+" }} Puntos de Interés</span
+        >
+      </label>
+      <div
+        class="root-collapsible-content {{ isExpanded(1) ? '' : 'hidden' }}"
+        [class.expanded]="isExpanded(1)"
+      >
+        <div class="m-0 h-[22px]">
+          <input
+            id="busStops"
+            type="checkbox"
+            (click)="selectOption('busStops', $event)"
+          />
+          <label for="busStops" class="ml-1 unselectable"
+            >Paradas de Micros</label
+          >
+        </div>
+        <div class="m-0 h-[22px]">
+          <input
+            id="buses"
+            type="checkbox"
+            (click)="selectBus($event)"
+            [checked]="showBusesOption"
+          />
+          <label for="buses" class="ml-1 unselectable">Micros</label>
+        </div>
+        <div class="m-0 h-[22px]">
+          <input
+            id="cityCameras"
+            type="checkbox"
+            (click)="selectOption('cityCameras', $event)"
+          />
+          <label for="cityCameras" class="ml-1 unselectable">Cámaras</label>
+        </div>
+        <div class="m-0 h-[22px]">
+          <input
+            id="parkings"
+            type="checkbox"
+            (click)="selectOption('parkings', $event)"
+          />
+          <label for="parkings" class="ml-1 unselectable">Parqueos</label>
+        </div>
+        <div class="m-0 h-[22px]">
+          <input
+            id="speedReducers"
+            type="checkbox"
+            (click)="selectOption('speedReducers', $event)"
+          />
+          <label for="speedReducers" class="ml-1 unselectable">Reductores</label>
+        </div>
+        <div class="m-0 h-[22px]">
+          <input
+            id="channelsRoutes"
+            type="checkbox"
+            (click)="selectOption('channelsRoutes', $event)"
+          />
+          <label for="channelsRoutes" class="ml-1 unselectable"
+            >Canales de Transporte</label
+          >
+        </div>
+
+        <div class="collapsible-container">
+          <div class="cursor-pointer m-0 h-[22px]">
+            <input
+              type="checkbox"
+              [checked]="groupsMap['educationCentersGroups']"
+              (click)="selectOption('educationCentersGroups', $event, true)"
+            />
+            <label class="cursor-pointer" (click)="toggleCollapse(2)"
+              ><span class="unselectable">
+                {{ this.expandedIndices.has(2) ? "-" : "+" }} Educación</span
+              ></label
+            >
+          </div>
+          @for(group of allData.educationCentersGroups; track group; let i =
+          $index) {
+          <div
+            class="collapsible-content {{ isExpanded(2) ? '' : 'hidden' }}"
+            [class.expanded]="isExpanded(2)"
+          >
+            <input
+              id="education-{{ group.id }}"
+              (click)="
+                selectOption(
+                  'educationCentersGroups',
+                  $event,
+                  false,
+                  optionsMap['educationCentersGroups'].children![i]
+                )
+              "
+              type="checkbox"
+              [checked]="optionsMap['educationCentersGroups'].children![i].show"
+            />
+            <label for="education-{{ group.id }}" class="ml-1 unselectable">{{
+              group.type
+            }}</label>
+          </div>
+          }
+        </div>
+        <div class="collapsible-container">
+          <div class="cursor-pointer m-0 h-[22px]">
+            <input
+              type="checkbox"
+              [checked]="groupsMap['trafficLightsGroups']"
+              (click)="selectOption('trafficLightsGroups', $event, true)"
+            />
+            <label class="cursor-pointer" (click)="toggleCollapse(3)"
+              ><span class="unselectable">
+                {{ this.expandedIndices.has(3) ? "-" : "+" }} Semáforos</span
+              ></label
+            >
+          </div>
+          @for(group of allData.trafficLightsGroups; track group; let i = $index)
+          {
+          <div
+            class="collapsible-content {{ isExpanded(3) ? '' : 'hidden' }}"
+            [class.expanded]="isExpanded(3)"
+          >
+            <input
+              id="traffic-{{ group.id }}"
+              (click)="
+                selectOption(
+                  'trafficLightsGroups',
+                  $event,
+                  false,
+                  optionsMap['trafficLightsGroups'].children![i]
+                )
+              "
+              type="checkbox"
+              [checked]="optionsMap['trafficLightsGroups'].children![i].show"
+            />
+            <label for="traffic-{{ group.id }}" class="ml-1 unselectable">{{
+              group.type
+            }}</label>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

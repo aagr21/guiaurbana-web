@@ -1,0 +1,38 @@
+@if(!isLoading) {
+<mat-drawer-container class="drawer-container" autosize>
+  <mat-drawer
+    #drawer
+    class="drawer"
+    mode="over"
+    [autoFocus]="true"
+    [opened]="showBusesOption"
+  >
+    <app-sidebar />
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-map class="overflow-hidden" />
+    @if(showBusesOption){
+    <div class="flex items-center justify-center h-full z-[2] absolute">
+      <button class="bg-white vertical-button" (click)="drawer.toggle()">
+        <span class="material-symbols-outlined">directions_bus</span>
+      </button>
+    </div>
+    }
+  </mat-drawer-content>
+</mat-drawer-container>
+} @else {
+<div class="flex justify-center items-center">
+  <img
+    class="relative"
+    src="assets/images/gamsc-logo.jpg"
+    alt="Gobierno Autónomo Municipal de Santa Cruz de la Sierra"
+  />
+</div>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.6)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+</ngx-spinner>
+}

@@ -1,0 +1,44 @@
+<div class="h-full w-full z-[0] absolute">
+  <div
+    leaflet
+    [leafletOptions]="options"
+    [style]="styleMap()"
+    (leafletMapReady)="onMapReady($event)"
+  >
+    <div [leafletLayer]="baseLayers[baseLayer]"></div>
+    @if(optionsMap['busStops'].show) {
+    <div [leafletLayer]="optionsMap['busStops'].layer!"></div>
+    } @if(optionsMap['cityCameras'].show) {
+    <div [leafletLayer]="optionsMap['cityCameras'].layer!"></div>
+    } @if(optionsMap['parkings'].show) {
+    <div [leafletLayer]="optionsMap['parkings'].layer!"></div>
+    } @if(optionsMap['channelsRoutes'].show) {
+    <div [leafletLayer]="optionsMap['channelsRoutes'].layer!"></div>
+    } @if(optionsMap['speedReducers'].show) {
+    <div [leafletLayer]="optionsMap['speedReducers'].layer!"></div>
+    } @for(child of optionsMap['educationCentersGroups'].children!; track child)
+    { @if (child.show) {
+    <div [leafletLayer]="child.layer!"></div>
+    } } @for(child of optionsMap['trafficLightsGroups'].children!; track child)
+    { @if (child.show) {
+    <div [leafletLayer]="child.layer!"></div>
+    } }
+  </div>
+  <leaflet-locate-control
+    [options]="locateOptions"
+    [map]="map"
+    (location$)="onNewLocation($event)"
+  />
+</div>
+
+<div class="float-end z-[1] relative m-2">
+  <leaflet-panel-layers />
+</div>
+
+@if (showBusesOption && lineRouteSelected) {
+<!-- TODO: -->
+<div class="float-end z-[2] relative m-2">
+  
+</div>
+
+}

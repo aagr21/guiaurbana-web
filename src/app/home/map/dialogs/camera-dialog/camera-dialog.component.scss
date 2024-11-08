@@ -1,0 +1,55 @@
+.GAMSC-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85px;
+  background-color: #ffffff;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.SMTT-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+  background-color: #ffffff;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.alcalde-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 65px;
+  background-color: #ffffff;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.image {
+  max-height: 100%;
+  max-width: 100%;
+  height: 100%;
+  width: auto;
+  border-radius: 3px;
+}
+
+.inverted {
+  transform: scaleX(-1);
+}
+
+@media (max-width: 600px) {
+  .GAMSC-container {
+    height: 50px;
+  }
+
+  .SMTT-container {
+    height: 45px;
+  }
+
+  .alcalde-container {
+    height: 45px;
+  }
+}

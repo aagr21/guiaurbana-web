@@ -1,0 +1,50 @@
+<mat-dialog-content>
+  <div class="my-0 grid grid-cols-3">
+    <a
+      class="alcalde-container"
+      href="https://www.facebook.com/JhonnyFernandezTuAmigo"
+      target="_blank"
+    >
+      <img
+        class="image inverted"
+        src="assets/images/alcalde.png"
+        alt="Alcalde Jhonny Fernández Saucedo"
+      />
+    </a>
+    <a
+      class="GAMSC-container"
+      href="https://www.gmsantacruz.gob.bo"
+      target="_blank"
+    >
+      <img
+        class="image"
+        src="assets/images/gamsc-logo.png"
+        alt="Gobierno Autónomo Municipal de Santa Cruz de la Sierra"
+      />
+    </a>
+    <a
+      class="SMTT-container"
+      href="https://www.facebook.com/SecretariaMunicipalDeTransitoyTransporte"
+      target="_blank"
+    >
+      <img
+        class="image"
+        src="assets/images/SMTT-logo.png"
+        alt="Secretaría Municipal de Tránsito y Transporte"
+      />
+    </a>
+  </div>
+  <div class="flex justify-center items-center text-xs h-9">
+    EN VIVO&nbsp;<object type="image/svg+xml" data="/assets/images/live.svg">
+      Your browser does not support SVG</object
+    >&nbsp; - {{ data.location }}
+  </div>
+  <div class="text-center text-xs">
+    La ventana se cerrará en: {{ seconds }} segundos
+  </div>
+  <div class="mt-1 px-3 py-1">
+    <div class="rounded-xl overflow-hidden">
+      <video src="{{ data.urlVideo }}" autoplay controls="true" muted></video>
+    </div>
+  </div>
+</mat-dialog-content>
