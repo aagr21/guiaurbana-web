@@ -10,10 +10,10 @@ import {
   Control,
   latLng,
   Layer,
-  LocateOptions,
   LocationEvent,
   Map,
   MapOptions,
+  polyline,
   tileLayer,
 } from 'leaflet';
 import { LeafletPanelLayersComponent } from './controls/leaflet-panel-layers/leaflet-panel-layers.component';
@@ -121,6 +121,14 @@ export class MapComponent implements OnInit {
         this.showBusesOption = data;
       },
     });
+  }
+
+  lineRouteSelectedLayer(lineRouteSelected: LineRoute) {
+    const coordinates: L.LatLngTuple[] = lineRouteSelected.geom.coordinates.map(
+      (coord) => [coord[1], coord[0]]
+    );
+
+    return polyline(coordinates);
   }
 
   styleMap() {

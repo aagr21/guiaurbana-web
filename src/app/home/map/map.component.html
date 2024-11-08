@@ -22,7 +22,9 @@
     } } @for(child of optionsMap['trafficLightsGroups'].children!; track child)
     { @if (child.show) {
     <div [leafletLayer]="child.layer!"></div>
-    } }
+    } } @if(lineRouteSelected && showBusesOption) {
+    <div [leafletLayer]="lineRouteSelectedLayer(lineRouteSelected)"></div>
+    }
   </div>
   <leaflet-locate-control
     [options]="locateOptions"
@@ -37,8 +39,6 @@
 
 @if (showBusesOption && lineRouteSelected) {
 <!-- TODO: -->
-<div class="float-end z-[2] relative m-2">
-  
-</div>
+<div class="float-end z-[2] relative m-2"></div>
 
 }
